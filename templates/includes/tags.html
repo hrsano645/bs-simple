@@ -1,0 +1,13 @@
+<div id="tags">
+    <h4><span class="fa fa-tags"></span><a href="/tags.html">Tags</a></h4>
+    <div class="panel panel-default">
+        <div class="panel-body">
+        <ul class="list-group list-inline" id="links">
+            {%- for tag, articles in tags|sort %}
+                {% if not tag == "" %}
+                <li class="list-group-item"><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a></li>
+                {% endif %}
+            {%- endfor %}
+        </ul></div>
+    </div>
+</div>

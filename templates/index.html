@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<section id="content">
+{% block content_title %}
+{% endblock %}
+
+<ol id="post-list">
+{% for article in articles_page.object_list %}
+        <li>
+            <article class="hentry">
+                <header> <h2 class="entry-title"><a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark" title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2> </header>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <footer class="post-info">
+                            <div id="article-info">
+                                <span class="fa fa-calendar-o"></span><abbr class="published" title="{{ article.date.isoformat() }}"> {{ article.locale_date }} </abbr>
+                                <span class="glyphicon glyphicon-folder-open"></span><a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category}}</a>
+                            </div>
+                            <address class="vcard author"><span class="fa fa-users"></span>
+                            {% for author in article.authors %}
+                                <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
+                            {% endfor %}
+                            </address>
+                        </footer><!-- /.post-info -->
+                    </div>
+                </div>
+                <div class="entry-content"> {{ article.summary }} </div><!-- /.entry-content -->
+                <a href="{{ SITEURL }}/{{ article.url }}"><button class="btn btn-primary">More...</button></a>
+            </article>
+        </li>
+{% endfor %}
+</ol><!-- /#posts-list -->
+{% include 'pagination.html' %}
+</section><!-- /#content -->
+{% endblock content %}

@@ -1,0 +1,137 @@
+/* body {
+  font-family: monospace;
+  font-size: 100%;
+  background-color: white;
+  color: #111;
+  width: 80%;
+  min-width: 400px;
+  min-height: 200px;
+  padding: 1em;
+  margin: 5% 10%;
+  border: thin solid gray;
+  border-radius: 5px;
+  display: block;
+}
+
+a:link    { color: blue; text-decoration: none;      }
+a:hover   { color: blue; text-decoration: underline; }
+a:visited { color: blue;                             }
+
+h1 a { color: inherit !important }
+h2 a { color: inherit !important }
+h3 a { color: inherit !important }
+h4 a { color: inherit !important }
+h5 a { color: inherit !important }
+h6 a { color: inherit !important }
+
+#menu li {
+    display: inline;
+}
+
+#post-list {
+    margin-bottom: 1em;
+    margin-top: 1em;
+}
+
+pre {
+    margin: 2em 1em 2em 4em;
+}
+ */
+
+body {
+    padding-top: 60px;
+    font-size: 16px;
+}
+
+span.fa,
+span.glyphicon{
+    margin-right:10px;
+}
+
+section#content > ol {
+    list-style-type: none;
+    margin:0px;
+    padding:0px;
+}
+
+section p {
+    line-height: 1.6em;
+    margin-bottom: 16px;
+}
+
+.list-inline > .list-group-item{
+    border:none;
+}
+
+footer.post-info > address {
+    margin-bottom:0px;
+}
+
+footer.post-info > #article-info > span.fa,
+footer.post-info > address > span.fa,
+footer.post-info > #article-info > span.glyphicon,
+footer.post-info > address > span.glyphicon{
+    margin:0px 5px;
+}
+
+/* single article*/
+
+div.entry-content > ol {
+    list-style-type: decimal;
+    margin-bottom:10px;
+    padding-left:32px;
+}
+
+section#content > div.entry-content > p > img {
+    /* width: 100%;
+    max-width: 640px; */
+    max-width: 100%;
+    margin: 0 auto;
+    display: block;
+}
+
+#post-list > li > article > div.entry-content > p > img {
+    /* width: 100%;
+    max-width: 640px; */
+    max-width: 100%;
+}
+
+article > div > p{
+    line-height: 1.6em;
+    margin-bottom: 16px;
+}
+
+div.entry-content > table{
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-collapse: separate;
+    border-spacing: 0;
+    border-width: 1px 0 0 1px;
+    margin-bottom: 24px;
+    width: 70%
+}
+
+div.entry-content> table > thead,
+div.entry-content> table > tbody {
+    font-family: inherit;
+    font-size: 100%;
+    font-style: inherit;
+    font-weight: inherit;
+    margin: 0;
+    outline: 0;
+    padding: 0;
+    vertical-align: baseline;
+}
+div.entry-content > table > thead > tr > th,
+div.entry-content > table > tbody > tr > td{
+    padding: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    border-width: 0 1px 1px 0;
+}
+
+/* external-area  */
+
+ .external-area {
+     width: 90%;
+     font-size: 8px;
+     margin:0 auto;
+ }
