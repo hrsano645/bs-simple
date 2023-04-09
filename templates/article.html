@@ -9,11 +9,6 @@
 
   {% if article.ogp_image_url %}
   <meta property="og:image" content="{{ article.ogp_image_url }}" />
-  {% elif DEFAULT_OGP_IMAGE_URL %}
-  <meta property="og:image" content="{{ DEFAULT_OGP_IMAGE_URL }}" />
-  {% endif %}
-  {% if article.ogp_image_url and article.twitter_card_large %}
-  <meta name="twitter:card" content="summary_large_image" />
   {% endif %}
 
   {{ super() }}
