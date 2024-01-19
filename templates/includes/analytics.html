@@ -1,3 +1,11 @@
+<!-- new analytics setting : insert setting in pelicanconf/publisheconf -->
+
+{% if ANALYTICS %}
+{{ ANALYTICS }}
+{% endif %}
+
+<!--deprecated: old analytics code -->
+
 <!--
 this source import pelican repository
 https://github.com/getpelican/pelican/blob/master/pelican/themes/notmyidea/templates/analytics.html
@@ -5,6 +13,8 @@ https://github.com/getpelican/pelican/blob/master/pelican/themes/notmyidea/templ
 GOOGLE_ANALYTICS_UNIVERSAL tag import pelican-bootstrap3
 https://github.com/DandyDev/pelican-bootstrap3/blob/master/templates/includes/ga.html
  -->
+
+{% if PIWIK_URL and PIWIK_SITE_ID %}
 
 {% if GOOGLE_ANALYTICS %}
     <script type="text/javascript">
