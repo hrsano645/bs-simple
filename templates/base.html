@@ -9,13 +9,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-    <meta name="author" content="{{ AUTHOR }}">
-    <meta name="description" content="Posts and writings by {{ AUTHOR }}">
-    <meta name="og:site_name" content="{{ SITENAME }}">
-    
-    <!-- other head tag: article ogp, etc... -->
-    {% block head %}
-    {% endblock head %}
+    <!-- OGP -->
+    {% block fb_ogp %} {% include 'theme_parts/fb_ogp.html' %} {% endblock %}
 
     <!-- pygments-css -->
     <link href="{{ SITEURL }}/theme/css/pygments/{{ PYGMENTS_STYLE|default('native') }}.css" rel="stylesheet" />
