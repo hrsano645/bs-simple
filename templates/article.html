@@ -1,27 +1,4 @@
 {% extends "base.html" %}
-{% block head %}
-
-  <!-- ogp -->
-  <meta name="og:url" content="{{ SITEURL }}/{{ article.url }}" />
-  <meta name="og:title" content="{{ article.title }}" />
-  <meta name="og:description" content="{{ article.summary|striptags }}" />
-  <meta name="keywords" content="{{ article.tags|join(', ')  }}">
-
-  <!-- TODO: 2023-11-30 ここは、ogp_image_url がないときのデフォルト画像を用意する -->
-  {% if article.ogp_image_url %}
-  <meta property="og:image" content="{{ article.ogp_image_url }}" />
-  {% endif %}
-
-  {{ super() }}
-  {% for keyword in article.keywords %}
-    <meta name="keywords" contents="{{keyword}}" />
-  {% endfor %}
-
-  {% for description in article.description %}
-    <meta name="description" contents="{{description}}" />
-  {% endfor %}
-
-{% endblock %}
 
 {% block title %}{{ SITENAME }} - {{ article.title }}{% endblock title %} 
 

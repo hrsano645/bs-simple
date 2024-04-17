@@ -19,5 +19,5 @@
 
 <meta
   property="og:description"
-  content="{% if article %}{{ article.summary | default(SITEDESCRIPTION) }}{% elif page %}{{ page.summary | default(SITEDESCRIPTION) }}{% else %}{{ SITEDESCRIPTION }}{% endif %}"
+  content="{% if article %}{{ article.summary| striptags | default(SITEDESCRIPTION) }}{% elif page %}{{ page.summary | striptags | default(SITEDESCRIPTION) }}{% else %}{{ SITEDESCRIPTION }}{% endif %}"
 />
