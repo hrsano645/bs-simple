@@ -1,63 +1,76 @@
-{% extends "base.html" %}
-
-{% block title %}{{ SITENAME }} - {{ article.title }}{% endblock title %} 
-
-{% block content %}
+{% extends "base.html" %} {% block title %}{{ SITENAME }} - {{ article.title
+}}{% endblock title %} {% block content %}
 
 <section id="content" class="body">
+  {% include "includes/external-area-article-top.html" %}
 
-    {% include "includes/external-area-article-top.html" %}
+  <header>
+    <h2 class="entry-title">
+      <a
+        href="{{ SITEURL }}/{{ article.url }}"
+        rel="bookmark"
+        title="Permalink to {{ article.title|striptags }}"
+        >{{ article.title }}</a
+      >
+    </h2>
+    {% import 'translations.html' as translations with context %} {{
+    translations.translations_for(article) }}
+  </header>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <footer class="post-info">
+        <div id="article-info">
+          <span class="fa fa-calendar-o"></span
+          ><abbr class="published" title="{{ article.date.isoformat() }}">
+            {{ article.locale_date }}
+          </abbr>
+          {% if article.modified %}
+          <span class="fa fa-pencil-square-o"></span
+          ><abbr class="modified" title="{{ article.modified.isoformat() }}">
+            {{ article.locale_modified }}
+          </abbr>
+          {% endif %}
 
-    <header>
-        <h2 class="entry-title">
-          <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
-             title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h2>
-        {% import 'translations.html' as translations with context %}
-        {{ translations.translations_for(article) }}
-    </header>
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <footer class="post-info">
-                <div id="article-info">
-                    <span class="fa fa-calendar-o"></span><abbr class="published" title="{{ article.date.isoformat() }}">
-                      {{ article.locale_date }}
-                    </abbr>
-                    {% if article.modified %}
-                    <span class="fa fa-pencil-square-o"></span><abbr class="modified" title="{{ article.modified.isoformat() }}">
-                      {{ article.locale_modified }}
-                    </abbr>
-                    {% endif %}
-
-                    <span class="glyphicon glyphicon-folder-open"></span><a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category}}</a>
-                    {% if article.tags %}
-                    <span class="fa fa-tags"></span>
-                    {% for tag in article.tags %}
-                    	<a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
-                        {% if not loop.last %}
-                            ,
-                        {% endif %}
-                    {% endfor %}
-                    {% endif %}
-                </div>
-                {% if article.authors %}
-                <address class="vcard author">
-                    <span class="fa fa-users"></span>
-                    {% for author in article.authors %}
-                    <a class="url fn" href="{{ SITEURL }}/{{ author.url }}">{{ author }}</a>
-                    {% endfor %}
-                </address>
-                {% endif %}
-            </footer><!-- /.post-info -->
+          <span class="glyphicon glyphicon-folder-open"></span
+          ><a href="{{ SITEURL }}/{{ article.category.url }}"
+            >{{ article.category}}</a
+          >
+          {% if article.tags %}
+          <span class="fa fa-tags"></span>
+          {% for tag in article.tags %}
+          <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a>
+          {% if not loop.last %} , {% endif %} {% endfor %} {% endif %}
         </div>
+        {% if article.authors %}
+        <address class="vcard author">
+          <span class="fa fa-users"></span>
+          {% for author in article.authors %}
+          <a class="url fn" href="{{ SITEURL }}/{{ author.url }}"
+            >{{ author }}</a
+          >
+          {% endfor %}
+        </address>
+        {% endif %}
+      </footer>
+      <!-- /.post-info -->
     </div>
-    <div class="entry-content">
-    {{ article.content }}
-    </div><!-- /.entry-content -->
+  </div>
 
-    {% include "includes/external-area-article-bottom.html" %}
-
-    {% if DISQUS_SITENAME and SITEURL and article.status != "draft" %}
-        {% include "includes/disqus_script.html" %}
+  <div class="eyecache" style="margin-bottom: 12px">
+    {% if article.og_image %}
+    <img
+      src="{{ article.og_image }}"
+      class="card-img-top"
+      alt="{{ article.title }}"
+      style="object-fit: cover; width: 100%; height: 100%"
+    />
     {% endif %}
+  </div>
+  <div class="entry-content">{{ article.content }}</div>
+  <!-- /.entry-content -->
+
+  {% include "includes/external-area-article-bottom.html" %} {% if
+  DISQUS_SITENAME and SITEURL and article.status != "draft" %} {% include
+  "includes/disqus_script.html" %} {% endif %}
 </section>
 {% endblock %}
